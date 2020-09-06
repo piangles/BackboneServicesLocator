@@ -1,8 +1,13 @@
 package com.TBD.backbone.services;
 
+import com.TBD.backbone.services.auth.AuthenticationService;
 import com.TBD.backbone.services.config.ConfigService;
 import com.TBD.backbone.services.crypto.CryptoService;
+import com.TBD.backbone.services.id.IdService;
+import com.TBD.backbone.services.logging.LoggingService;
+import com.TBD.backbone.services.prefs.UserPreferenceService;
 import com.TBD.backbone.services.session.SessionManagementService;
+import com.TBD.core.services.remoting.locator.AbstractServiceLocator;
 
 public final class Locator extends AbstractServiceLocator
 {

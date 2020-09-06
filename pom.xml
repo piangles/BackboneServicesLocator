@@ -1,20 +1,43 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.TBD.backbone.services</groupId>
 	<artifactId>BackboneServicesLocator</artifactId>
 	<packaging>jar</packaging>
-	<version>${idl-backbone-services-locator-version}</version>
-	
+	<version>0.1</version>
+
 	<properties>
 		<org.springframework.build.aws-maven-version>5.0.0.RELEASE</org.springframework.build.aws-maven-version>
 		<maven-compiler-plugin-version>3.3</maven-compiler-plugin-version>
 		<maven-dependency-plugin>2.10</maven-dependency-plugin>
-
 		<java-source-version>1.8</java-source-version>
 		<java-target-version>1.8</java-target-version>
-
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.TBD.backbone.services</groupId>
+			<artifactId>BackBoneServices</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.TBD.core</groupId>
+			<artifactId>Core</artifactId>
+			<version>0.1</version>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>piangle-s3-artifact</id>
+			<url>s3://piangle-s3-artifact/snapshot</url>
+		</snapshotRepository>
+		<repository>
+			<id>piangle-s3-artifact</id>
+			<url>s3://piangle-s3-artifact/release</url>
+		</repository>
+	</distributionManagement>
 
 
 	<build>
@@ -22,7 +45,7 @@
 			<extension>
 				<groupId>org.springframework.build</groupId>
 				<artifactId>aws-maven</artifactId>
-				<version>${org.springframework.build.aws-maven-version}</version>
+				<version>5.0.0.RELEASE</version>
 			</extension>
 		</extensions>
 		<plugins>
