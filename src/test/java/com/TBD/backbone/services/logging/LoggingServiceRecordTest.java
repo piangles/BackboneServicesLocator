@@ -1,18 +1,15 @@
-package com.TBD.backbone.services;
+package com.TBD.backbone.services.logging;
 
 import java.util.UUID;
 
-import com.TBD.backbone.services.logging.Category;
-import com.TBD.backbone.services.logging.LogEvent;
-import com.TBD.backbone.services.logging.LoggingService;
-import com.TBD.backbone.services.logging.SystemInfo;
+import com.TBD.backbone.services.Locator;
 
 public class LoggingServiceRecordTest
 {
 	public static void main(String[] args)
 	{
 		System.setProperty("process.name", "LoggingTest");
-		LoggingService logger = Tier2ServiceLocator.getInstance().getLoggingService();
+		LoggingService logger = Locator.getInstance().getLoggingService();
 		
 		SystemInfo systemInfo = new SystemInfo("Hostname", "Loginid", "ProcessName", "ProcessId");
 		String threadId = Thread.currentThread().getName();

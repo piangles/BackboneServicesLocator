@@ -1,6 +1,6 @@
-package com.TBD.backbone.services;
+package com.TBD.backbone.services.logging;
 
-import com.TBD.backbone.services.logging.LoggingService;
+import com.TBD.backbone.services.Locator;
 import com.TBD.core.services.remoting.SessionAwareable;
 import com.TBD.core.services.remoting.SessionDetails;
 
@@ -15,7 +15,7 @@ public class LoggingServiceTest extends Thread implements SessionAwareable
 	public void run()
 	{
 		System.setProperty("process.name", "LoggingTest");
-		LoggingService logger = Tier2ServiceLocator.getInstance().getLoggingService();
+		LoggingService logger = Locator.getInstance().getLoggingService();
 		logger.info(null);
 		logger.info("TestMessage");
 		logger.info("TestMessage", new Exception());

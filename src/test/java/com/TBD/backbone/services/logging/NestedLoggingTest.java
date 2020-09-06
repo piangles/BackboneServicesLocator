@@ -1,6 +1,6 @@
-package com.TBD.backbone.services;
+package com.TBD.backbone.services.logging;
 
-import com.TBD.backbone.services.logging.LoggingService;
+import com.TBD.backbone.services.Locator;
 
 public class NestedLoggingTest
 {
@@ -8,7 +8,7 @@ public class NestedLoggingTest
 	{
 		
 		System.setProperty("process.name", "LoggingTest");
-		LoggingService logger = Tier2ServiceLocator.getInstance().getLoggingService();
+		LoggingService logger = Locator.getInstance().getLoggingService();
 		logger.info("NestedTestMessage1");
 		LoggingCaller.log();
 		System.out.println("Done!");

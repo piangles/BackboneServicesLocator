@@ -1,6 +1,7 @@
 package com.TBD.backbone.services.crypto;
 
-import com.TBD.core.util.abstractions.Decrypter;
+import com.TBD.backbone.services.Locator;
+import com.TBD.core.util.abstractions.AbstractDecrypter;
 
 /**
  * This class is bit of a hack. There is no way in Java and it is also bad
@@ -10,24 +11,26 @@ import com.TBD.core.util.abstractions.Decrypter;
  * for just Authorization code. So the hack is since this class is used very rarely
  * so we lock on the Class object and swap the dynamic value to static value.
  */
-public final class DefaultDecrypter implements Decrypter
+public final class DefaultDecrypter extends AbstractDecrypter
 {
 	private static String cipherAuthorizationId = null;
 	private String instanceOfCipherAuthorizationId = null;
 	
-	public DefaultDecrypter(String instanceOfCipherAuthorizationId)
+	//TODO CHECK IF THIS WILL WORK
+	public DefaultDecrypter(String serviceName, String instanceOfCipherAuthorizationId)
 	{
+		super(serviceName);
 		this.instanceOfCipherAuthorizationId = instanceOfCipherAuthorizationId;
 	}
 	
 	@Override
-	public String decrypt(String toBeDecrypted) throws Exception
+	public String decrypt(String encryptedName, String encryptedValue) throws Exception
 	{
 		String decryptedData = null;
 		synchronized(DefaultDecrypter.class) //Lock on this class and then change the static data
 		{
 			cipherAuthorizationId = instanceOfCipherAuthorizationId;
-			decryptedData = Tier1ServiceLocator.getInstance().getCryptoService().decrypt(toBeDecrypted);
+			decryptedData = Locator.getInstance().getCryptoService().decrypt(encryptedValue);
 		}
 		return decryptedData;
 	}

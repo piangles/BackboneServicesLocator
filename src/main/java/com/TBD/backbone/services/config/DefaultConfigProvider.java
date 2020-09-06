@@ -2,27 +2,19 @@ package com.TBD.backbone.services.config;
 
 import java.util.Properties;
 
-import com.TBD.core.util.abstractions.ConfigProvider;
+import com.TBD.backbone.services.Locator;
+import com.TBD.core.util.abstractions.AbstractConfigProvider;
 
-public class DefaultConfigProvider implements ConfigProvider
+public class DefaultConfigProvider extends AbstractConfigProvider
 {
-	private String componentId = null;
-			
-	public DefaultConfigProvider(String componentId)
+	public DefaultConfigProvider(String serviceName, String componentId)
 	{
-		this.componentId = componentId;
-	}
-
-	@Override
-	public String getComponentId()
-	{
-		return componentId;
+		super(serviceName, componentId);	
 	}
 
 	@Override
 	public Properties getProperties() throws Exception
 	{
-		return Tier1ServiceLocator.getInstance().getConfigService().getConfiguration(componentId).getProperties();
+		return Locator.getInstance().getConfigService().getConfiguration(getComponentId()).getProperties();
 	}
-
 }

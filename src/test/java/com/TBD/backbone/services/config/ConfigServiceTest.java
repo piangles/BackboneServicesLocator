@@ -1,8 +1,6 @@
-package com.TBD.backbone.services;
+package com.TBD.backbone.services.config;
 
-import com.TBD.backbone.services.config.ConfigException;
-import com.TBD.backbone.services.config.ConfigService;
-import com.TBD.backbone.services.config.Configuration;
+import com.TBD.backbone.services.Locator;
 import com.TBD.core.services.remoting.SessionAwareable;
 import com.TBD.core.services.remoting.SessionDetails;
 
@@ -16,7 +14,7 @@ public class ConfigServiceTest extends Thread implements SessionAwareable
 	
 	public void run()
 	{
-		ConfigService configService = Tier1ServiceLocator.getInstance().getConfigService();
+		ConfigService configService = Locator.getInstance().getConfigService();
 		Configuration config;
 		try 
 		{

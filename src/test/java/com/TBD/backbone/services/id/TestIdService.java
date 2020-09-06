@@ -1,6 +1,6 @@
-package com.TBD.backbone.services;
+package com.TBD.backbone.services.id;
 
-import com.TBD.backbone.services.id.IdException;
+import com.TBD.backbone.services.Locator;
 
 public class TestIdService
 {
@@ -8,7 +8,7 @@ public class TestIdService
 	{
 		try
 		{
-			String nextId = Tier3ServiceLocator.getInstance().getIdService().getNextIdentifier("Whatever");
+			String nextId = Locator.getInstance().getIdService().getNextIdentifier("Whatever");
 			System.out.println("Next Identifier : " + nextId);
 		}
 		catch (IdException e)

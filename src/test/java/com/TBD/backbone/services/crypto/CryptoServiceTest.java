@@ -1,7 +1,6 @@
 package com.TBD.backbone.services.crypto;
 
-import com.TBD.backbone.services.crypto.CryptoException;
-import com.TBD.backbone.services.crypto.CryptoService;
+import com.TBD.backbone.services.Locator;
 
 public class CryptoServiceTest 
 {
@@ -9,7 +8,7 @@ public class CryptoServiceTest
 	
 	public static void main(String[] args) 
 	{
-		CryptoService cryptoService = Tier1ServiceLocator.getInstance().getCryptoService();
+		CryptoService cryptoService = Locator.getInstance().getCryptoService();
 		try 
 		{
 			String decryptedValue = cryptoService.decrypt("TdmVTwllpL3hE+HyDz1ScA==");
