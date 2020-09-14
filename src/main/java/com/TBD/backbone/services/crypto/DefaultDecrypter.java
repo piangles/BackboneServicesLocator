@@ -14,22 +14,14 @@ import com.TBD.core.util.abstractions.AbstractDecrypter;
 public final class DefaultDecrypter extends AbstractDecrypter
 {
 	private static String cipherAuthorizationId = null;
-	private String instanceOfCipherAuthorizationId = null;
 	
-	//TODO CHECK IF THIS WILL WORK
-	public DefaultDecrypter(String serviceName, String instanceOfCipherAuthorizationId)
-	{
-		super(serviceName);
-		this.instanceOfCipherAuthorizationId = instanceOfCipherAuthorizationId;
-	}
-	
-	@Override
+	@Override //TODO Figure out a way to use encryptedName is possible
 	public String decrypt(String encryptedName, String encryptedValue) throws Exception
 	{
 		String decryptedData = null;
 		synchronized(DefaultDecrypter.class) //Lock on this class and then change the static data
 		{
-			cipherAuthorizationId = instanceOfCipherAuthorizationId;
+			cipherAuthorizationId = getCipherAuthorizationId();
 			decryptedData = Locator.getInstance().getCryptoService().decrypt(encryptedValue);
 		}
 		return decryptedData;
