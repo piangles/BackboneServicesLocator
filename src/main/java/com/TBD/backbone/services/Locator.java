@@ -74,6 +74,6 @@ public final class Locator extends AbstractServiceLocator
 	
 	public ControlChannelService getChannelControlService()
 	{
-		return (ControlChannelService) createProxy("ChannelControlService", ControlChannelService.class);
+		return (ControlChannelService) createProxy("ControlChannelService", ControlChannelService.class);
 	}
 }
