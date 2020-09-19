@@ -3,6 +3,7 @@ package com.TBD.backbone.services;
 import com.TBD.backbone.services.auth.AuthenticationService;
 import com.TBD.backbone.services.config.ConfigService;
 import com.TBD.backbone.services.crypto.CryptoService;
+import com.TBD.backbone.services.ctrl.ControlChannelService;
 import com.TBD.backbone.services.id.IdService;
 import com.TBD.backbone.services.logging.LoggingService;
 import com.TBD.backbone.services.prefs.UserPreferenceService;
@@ -69,5 +70,10 @@ public final class Locator extends AbstractServiceLocator
 	public UserPreferenceService getUserPreferenceService()
 	{
 		return (UserPreferenceService) createProxy("UserPreferenceService", UserPreferenceService.class);
+	}
+	
+	public ControlChannelService getChannelControlService()
+	{
+		return (ControlChannelService) createProxy("ChannelControlService", ControlChannelService.class);
 	}
 }
