@@ -1,8 +1,13 @@
-package com.TBD.backbone.services.logging;
+package org.piangles.backbone.services.logging;
 
 import java.util.UUID;
 
-import com.TBD.backbone.services.Locator;
+import org.piangles.backbone.services.Locator;
+
+import com.TBD.backbone.services.logging.Category;
+import com.TBD.backbone.services.logging.LogEvent;
+import com.TBD.backbone.services.logging.LoggingService;
+import com.TBD.backbone.services.logging.SystemInfo;
 
 public class LoggingServiceRecordTest
 {

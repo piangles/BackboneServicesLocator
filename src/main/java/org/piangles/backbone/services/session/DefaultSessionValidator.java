@@ -1,6 +1,7 @@
-package com.TBD.backbone.services.session;
+package org.piangles.backbone.services.session;
 
-import com.TBD.backbone.services.Locator;
+import org.piangles.backbone.services.Locator;
+
 import com.TBD.core.services.Request;
 import com.TBD.core.services.remoting.SessionValidator;
 
