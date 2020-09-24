@@ -4,10 +4,10 @@ import java.util.UUID;
 
 import org.piangles.backbone.services.Locator;
 
-import com.TBD.backbone.services.logging.Category;
-import com.TBD.backbone.services.logging.LogEvent;
-import com.TBD.backbone.services.logging.LoggingService;
-import com.TBD.backbone.services.logging.SystemInfo;
+import org.piangles.backbone.services.logging.Category;
+import org.piangles.backbone.services.logging.LogEvent;
+import org.piangles.backbone.services.logging.LoggingService;
+import org.piangles.backbone.services.logging.SystemInfo;
 
 public class LoggingServiceRecordTest
 {

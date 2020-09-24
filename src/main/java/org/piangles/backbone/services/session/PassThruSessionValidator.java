@@ -1,7 +1,7 @@
 package org.piangles.backbone.services.session;
 
-import com.TBD.core.services.Request;
-import com.TBD.core.services.remoting.SessionValidator;
+import org.piangles.core.services.Request;
+import org.piangles.core.services.remoting.SessionValidator;
 
 public final class PassThruSessionValidator implements SessionValidator
 {

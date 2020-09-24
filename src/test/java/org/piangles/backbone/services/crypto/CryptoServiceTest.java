@@ -2,8 +2,8 @@ package org.piangles.backbone.services.crypto;
 
 import org.piangles.backbone.services.Locator;
 
-import com.TBD.backbone.services.crypto.CryptoException;
-import com.TBD.backbone.services.crypto.CryptoService;
+import org.piangles.backbone.services.crypto.CryptoException;
+import org.piangles.backbone.services.crypto.CryptoService;
 
 public class CryptoServiceTest 
 {

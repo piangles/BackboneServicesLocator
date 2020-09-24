@@ -2,7 +2,7 @@ package org.piangles.backbone.services.id;
 
 import org.piangles.backbone.services.Locator;
 
-import com.TBD.backbone.services.id.IdException;
+import org.piangles.backbone.services.id.IdException;
 
 public class TestIdService
 {

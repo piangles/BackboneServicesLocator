@@ -4,7 +4,7 @@ import java.util.Properties;
 
 import org.piangles.backbone.services.Locator;
 
-import com.TBD.core.util.abstractions.AbstractConfigProvider;
+import org.piangles.core.util.abstractions.AbstractConfigProvider;
 
 public class DefaultConfigProvider extends AbstractConfigProvider
 {
