@@ -1,8 +1,10 @@
-package com.TBD.backbone.services.logging;
+package org.piangles.backbone.services.logging;
 
-import com.TBD.backbone.services.Locator;
-import com.TBD.core.services.remoting.SessionAwareable;
-import com.TBD.core.services.remoting.SessionDetails;
+import org.piangles.backbone.services.Locator;
+
+import org.piangles.backbone.services.logging.LoggingService;
+import org.piangles.core.services.remoting.SessionAwareable;
+import org.piangles.core.services.remoting.SessionDetails;
 
 public class LoggingServiceTest extends Thread implements SessionAwareable
 {

@@ -1,9 +1,10 @@
-package com.TBD.backbone.services.config;
+package org.piangles.backbone.services.config;
 
 import java.util.Properties;
 
-import com.TBD.backbone.services.Locator;
-import com.TBD.core.util.abstractions.AbstractConfigProvider;
+import org.piangles.backbone.services.Locator;
+
+import org.piangles.core.util.abstractions.AbstractConfigProvider;
 
 public class DefaultConfigProvider extends AbstractConfigProvider
 {

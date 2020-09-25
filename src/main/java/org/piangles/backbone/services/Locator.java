@@ -1,14 +1,15 @@
-package com.TBD.backbone.services;
+package org.piangles.backbone.services;
 
-import com.TBD.backbone.services.auth.AuthenticationService;
-import com.TBD.backbone.services.config.ConfigService;
-import com.TBD.backbone.services.crypto.CryptoService;
-import com.TBD.backbone.services.ctrl.ControlChannelService;
-import com.TBD.backbone.services.id.IdService;
-import com.TBD.backbone.services.logging.LoggingService;
-import com.TBD.backbone.services.prefs.UserPreferenceService;
-import com.TBD.backbone.services.session.SessionManagementService;
-import com.TBD.core.services.remoting.locator.AbstractServiceLocator;
+import org.piangles.backbone.services.ctrl.ControlChannelService;
+
+import org.piangles.backbone.services.auth.AuthenticationService;
+import org.piangles.backbone.services.config.ConfigService;
+import org.piangles.backbone.services.crypto.CryptoService;
+import org.piangles.backbone.services.id.IdService;
+import org.piangles.backbone.services.logging.LoggingService;
+import org.piangles.backbone.services.prefs.UserPreferenceService;
+import org.piangles.backbone.services.session.SessionManagementService;
+import org.piangles.core.services.remoting.locator.AbstractServiceLocator;
 
 public final class Locator extends AbstractServiceLocator
 {

@@ -1,7 +1,8 @@
-package com.TBD.backbone.services.crypto;
+package org.piangles.backbone.services.crypto;
 
-import com.TBD.backbone.services.Locator;
-import com.TBD.core.util.abstractions.AbstractDecrypter;
+import org.piangles.backbone.services.Locator;
+
+import org.piangles.core.util.abstractions.AbstractDecrypter;
 
 /**
  * This class is bit of a hack. There is no way in Java and it is also bad

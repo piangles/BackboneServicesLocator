@@ -1,6 +1,8 @@
-package com.TBD.backbone.services.id;
+package org.piangles.backbone.services.id;
 
-import com.TBD.backbone.services.Locator;
+import org.piangles.backbone.services.Locator;
+
+import org.piangles.backbone.services.id.IdException;
 
 public class TestIdService
 {

@@ -1,6 +1,8 @@
-package com.TBD.backbone.services.logging;
+package org.piangles.backbone.services.logging;
 
-import com.TBD.backbone.services.Locator;
+import org.piangles.backbone.services.Locator;
+
+import org.piangles.backbone.services.logging.LoggingService;
 
 public class LoggingCaller
 {
