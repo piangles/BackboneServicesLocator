@@ -1,12 +1,11 @@
 package org.piangles.backbone.services;
 
-import org.piangles.backbone.services.ctrl.ControlChannelService;
-
 import org.piangles.backbone.services.auth.AuthenticationService;
 import org.piangles.backbone.services.config.ConfigService;
 import org.piangles.backbone.services.crypto.CryptoService;
 import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.logging.LoggingService;
+import org.piangles.backbone.services.msg.MessagingService;
 import org.piangles.backbone.services.prefs.UserPreferenceService;
 import org.piangles.backbone.services.session.SessionManagementService;
 import org.piangles.core.services.remoting.locator.AbstractServiceLocator;
@@ -73,8 +72,8 @@ public final class Locator extends AbstractServiceLocator
 		return (UserPreferenceService) createProxy("UserPreferenceService", UserPreferenceService.class);
 	}
 	
-	public ControlChannelService getChannelControlService()
+	public MessagingService getMessagingService()
 	{
-		return (ControlChannelService) createProxy("ControlChannelService", ControlChannelService.class);
+		return (MessagingService) createProxy("MessagingService", MessagingService.class);
 	}
 }
