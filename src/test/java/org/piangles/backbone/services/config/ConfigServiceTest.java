@@ -22,6 +22,7 @@ public class ConfigServiceTest extends Thread implements SessionAwareable
 		Configuration config;
 		try 
 		{
+			System.out.println("Calling getConfiguration...");
 			config = configService.getConfiguration("14fe64ea-d15a-4c8b-af2f-f2c7efe1943b");
 			System.out.println(config.getProperties());
 		} 
