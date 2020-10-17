@@ -10,8 +10,8 @@ public class TestIdService
 	{
 		try
 		{
-			String nextId = Locator.getInstance().getIdService().getNextIdentifier("Whatever");
-			System.out.println("Next Identifier : " + nextId);
+			Identifier nextId = Locator.getInstance().getIdService().getNextIdentifier("Whatever");
+			System.out.println("Next Identifier : " + nextId.getValue());
 		}
 		catch (IdException e)
 		{
