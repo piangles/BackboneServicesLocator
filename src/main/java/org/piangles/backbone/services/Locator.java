@@ -7,6 +7,7 @@ import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.logging.LoggingService;
 import org.piangles.backbone.services.msg.MessagingService;
 import org.piangles.backbone.services.prefs.UserPreferenceService;
+import org.piangles.backbone.services.profile.UserProfileService;
 import org.piangles.backbone.services.session.SessionManagementService;
 import org.piangles.core.services.remoting.locator.AbstractServiceLocator;
 
@@ -32,13 +33,12 @@ public final class Locator extends AbstractServiceLocator
 		return self;
 	}
 
-	//Tier1
 	public SessionManagementService getSessionManagementService()
 	{
 		return (SessionManagementService) createProxy("SessionManagementService", SessionManagementService.class);
 	}
 	
-	//Tier2
+	//Tier1
 	public ConfigService getConfigService()
 	{
 		return (ConfigService) createProxy("ConfigService", ConfigService.class);
@@ -48,32 +48,35 @@ public final class Locator extends AbstractServiceLocator
 	{
 		return (CryptoService) createProxy("CryptoService", CryptoService.class);
 	}
-	
-	//Tier3
+
 	public LoggingService getLoggingService()
 	{
 		return (LoggingService) createProxy("LoggingService", LoggingService.class);
 	}
 
-	//Tier4
-	public IdService getIdService()
-	{
-		return (IdService) createProxy("IdService", IdService.class);
-	}
-	
-	//Tier5
+	//Rest of the Services
 	public AuthenticationService getAuthenticationService()
 	{
 		return (AuthenticationService) createProxy("AuthenticationService", AuthenticationService.class);
 	}
 	
+	public IdService getIdService()
+	{
+		return (IdService) createProxy("IdService", IdService.class);
+	}
+
+	public MessagingService getMessagingService()
+	{
+		return (MessagingService) createProxy("MessagingService", MessagingService.class);
+	}
+
 	public UserPreferenceService getUserPreferenceService()
 	{
 		return (UserPreferenceService) createProxy("UserPreferenceService", UserPreferenceService.class);
 	}
-	
-	public MessagingService getMessagingService()
+
+	public UserProfileService getUserProfileService()
 	{
-		return (MessagingService) createProxy("MessagingService", MessagingService.class);
+		return (UserProfileService) createProxy("UserProfileService", UserProfileService.class);
 	}
 }
