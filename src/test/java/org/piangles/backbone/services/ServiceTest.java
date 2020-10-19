@@ -2,6 +2,7 @@ package org.piangles.backbone.services;
 
 import org.piangles.backbone.services.config.ConfigService;
 import org.piangles.backbone.services.config.Configuration;
+import org.piangles.backbone.services.crypto.CryptoService;
 import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.profile.BasicUserProfile;
 import org.piangles.backbone.services.profile.UserProfileService;
@@ -10,6 +11,8 @@ import org.piangles.core.services.remoting.SessionDetails;
 
 public class ServiceTest extends Thread implements SessionAwareable
 {
+	private static String cipherAuthorizationId = "7a948dce-1ebb-4770-b077-f453e60243da";
+
 	public static void main(String[] args) 
 	{
 		ServiceTest test = new ServiceTest();
@@ -30,12 +33,19 @@ public class ServiceTest extends Thread implements SessionAwareable
 	{
 		try
 		{
-			userProfileGet();
+			encrypt();
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	private void encrypt() throws Exception
+	{
+		CryptoService crypto = Locator.getInstance().getCryptoService();
+		System.out.println("Encrypted:" + crypto.encrypt(""));
+		System.out.println("Decrypted[" + crypto.decrypt("w44ou8sw5qvLbj6VV7plrg==") + "]");
 	}
 
 	private void userProfileGet() throws Exception
