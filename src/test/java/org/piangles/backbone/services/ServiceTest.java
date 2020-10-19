@@ -46,7 +46,7 @@ public class ServiceTest extends Thread implements SessionAwareable
 	
 	private void userProfileCreate() throws Exception
 	{
-		BasicUserProfile profile = new BasicUserProfile("Test", "User", "testuser1@email.com");
+		BasicUserProfile profile = new BasicUserProfile("Test", "User", "testuser@piangles.org");
 		UserProfileService service = Locator.getInstance().getUserProfileService();
 		String id = service.createProfile(profile);
 		System.out.println("UserId: " + id);
