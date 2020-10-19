@@ -41,7 +41,7 @@ public class ServiceTest extends Thread implements SessionAwareable
 	private void userProfileGet() throws Exception
 	{
 		UserProfileService service = Locator.getInstance().getUserProfileService();
-		System.out.println(service.getProfile("b9b8a999").getEMailId());
+		System.out.println(service.getProfile("08f9c02d").getEMailId());
 	}
 	
 	private void userProfileCreate() throws Exception
