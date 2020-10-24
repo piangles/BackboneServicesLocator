@@ -13,7 +13,7 @@ public class MessagingRequestCreator extends DefaultRequestCreator
 	@Override
 	public Request createRequest(String userId, String sessionId, UUID traceId, String serviceName, Header header, Method method, Object[] args) throws Throwable
 	{
-		if (method.getName() == "fanOut" || method.getName().equals("publish"))
+		if (method.getName() == "fanOut")
 		{
 			/**
 			 * Convert the Payload from Object to JSON String, this is because the Messaging
@@ -24,6 +24,13 @@ public class MessagingRequestCreator extends DefaultRequestCreator
 			String payload = new String(JSON.getEncoder().encode(fanoutRequest.getEvent().getPayload()));
 			fanoutRequest.getEvent().setPayload(payload);
 			args = new Object[]{fanoutRequest};
+		}
+		else if (method.getName().equals("publish"))
+		{
+			Event event = (Event)args[1];
+			String payload = new String(JSON.getEncoder().encode(event.getPayload()));
+			event.setPayload(payload);
+			args = new Object[]{args[0], event};
 		}
 
 		return super.createRequest(userId, sessionId, traceId, serviceName, header, method, args);
