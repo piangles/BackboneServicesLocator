@@ -33,50 +33,54 @@ public final class Locator extends AbstractServiceLocator
 		return self;
 	}
 
+/*
+ * Tier1 Configuration
+ */
 	public SessionManagementService getSessionManagementService()
 	{
-		return (SessionManagementService) createProxy("SessionManagementService", SessionManagementService.class);
+		return (SessionManagementService) createProxy(SessionManagementService.NAME, SessionManagementService.class);
 	}
 	
-	//Tier1
 	public ConfigService getConfigService()
 	{
-		return (ConfigService) createProxy("ConfigService", ConfigService.class);
+		return (ConfigService) createProxy(ConfigService.NAME, ConfigService.class);
 	}
 
 	public CryptoService getCryptoService()
 	{
-		return (CryptoService) createProxy("CryptoService", CryptoService.class);
+		return (CryptoService) createProxy(CryptoService.NAME, CryptoService.class);
 	}
 
+/**
+ * Rest of the Backbone Services 	
+ */
 	public LoggingService getLoggingService()
 	{
-		return (LoggingService) createProxy("LoggingService", LoggingService.class);
+		return (LoggingService) createProxy(LoggingService.NAME, LoggingService.class);
 	}
 
-	//Rest of the Services
-	public AuthenticationService getAuthenticationService()
-	{
-		return (AuthenticationService) createProxy("AuthenticationService", AuthenticationService.class);
-	}
-	
 	public IdService getIdService()
 	{
-		return (IdService) createProxy("IdService", IdService.class);
+		return (IdService) createProxy(IdService.NAME, IdService.class);
 	}
 
+	public AuthenticationService getAuthenticationService()
+	{
+		return (AuthenticationService) createProxy(AuthenticationService.NAME, AuthenticationService.class);
+	}
+	
 	public MessagingService getMessagingService()
 	{
-		return (MessagingService) createProxy("MessagingService", MessagingService.class);
+		return (MessagingService) createProxy(MessagingService.NAME, MessagingService.class);
 	}
 
 	public UserPreferenceService getUserPreferenceService()
 	{
-		return (UserPreferenceService) createProxy("UserPreferenceService", UserPreferenceService.class);
+		return (UserPreferenceService) createProxy(UserPreferenceService.NAME, UserPreferenceService.class);
 	}
 
 	public UserProfileService getUserProfileService()
 	{
-		return (UserProfileService) createProxy("UserProfileService", UserProfileService.class);
+		return (UserProfileService) createProxy(UserProfileService.NAME, UserProfileService.class);
 	}
 }
