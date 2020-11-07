@@ -26,7 +26,7 @@ public final class CryptoServiceRequestCreator implements RequestCreator
 		}
 		catch (NoSuchFieldException e)
 		{
-			throw new Exception("Calling class needs to declate static cipherAuthorizationId for calling SecurityService cipher requests.");
+			throw new Exception("Calling class [" + classHelper.getClassName() + "] needs to declate static cipherAuthorizationId for calling SecurityService cipher requests.");
 		}
 		cipherAuthorizationId = (String) cipherAuthorizationIdField.get(null);
 

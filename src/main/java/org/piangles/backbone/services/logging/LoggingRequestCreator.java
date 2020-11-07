@@ -34,7 +34,6 @@ public class LoggingRequestCreator implements RequestCreator
 		Request request = null;
 		ClassHelper classHelper = new ClassHelper(5);
 		
-		//TODO solve the issue of creating many SourceInfo when logging is severe
 		SourceInfo sourceInfo = new SourceInfo(classHelper.getClassName(), classHelper.getLineNumber(), 
 				classHelper.getCompleteStackTrace(), null);
 		
