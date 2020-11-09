@@ -1,0 +1,121 @@
+version: "3.8"
+services:
+
+  session:
+    image: pianglesorg/session:latest
+    build:
+      context: ./session
+    env_file: ./services.env
+    container_name: session
+    command: ["wait", "10"]
+    
+#  crypto:
+#    image: pianglesorg/crypto:latest
+#    build:
+#      context: ./crypto
+#    env_file: ./services.env
+#    container_name: crypto
+#    depends_on: 
+#      - session
+#  
+#  config:
+#    image: pianglesorg/config:latest
+#    build:
+#      context: ./config
+#    env_file: ./services.env
+#    container_name: config
+#    depends_on: 
+#      - session
+#
+#  logging:
+#    image: pianglesorg/logging:latest
+#    build:
+#      context: ./logging
+#    env_file: ./services.env
+#    container_name: logging
+#    depends_on: 
+#      - crypto
+#      - config
+#
+#  id:
+#    image: pianglesorg/id:latest
+#    build:
+#      context: ./id
+#    env_file: ./services.env
+#    container_name: id
+#    depends_on: 
+#      - logging
+#  
+#  profile:
+#    image: pianglesorg/profile:latest
+#    build:
+#      context: ./profile
+#    env_file: ./services.env
+#    container_name: profile
+#    depends_on: 
+#      - id
+# 
+#  authentication:
+#    image: pianglesorg/authentication:latest
+#    build:
+#      context: ./auth
+#    env_file: ./services.env
+#    container_name: authentication
+#    depends_on: 
+#      - logging
+# 
+#  preferences:
+#    image: pianglesorg/preferences:latest
+#    build:
+#      context: ./prefs
+#    env_file: ./services.env
+#    container_name: preferences
+#    depends_on: 
+#      - logging
+# 
+#  msg:
+#    image: pianglesorg/msg:latest
+#    build:
+#      context: ./msg
+#    env_file: ./services.env
+#    container_name: msg
+#    depends_on: 
+#      - logging
+# 
+#  news:
+#    image: pianglescom/news:latest
+#    build:
+#      context: ./news
+#    env_file: ./services.env
+#    container_name: news
+#    depends_on: 
+#      - msg
+#  
+#  pricing:
+#    image: pianglescom/pricing:latest
+#    build:
+#      context: ./pricing
+#    env_file: ./services.env
+#    container_name: pricing
+#    depends_on: 
+#      - msg
+#  
+#  gateway:
+#    image: pianglescom/gateway:latest
+#    build:
+#      context: ./gateway
+#    env_file: ./services.env
+#    container_name: gateway
+#    depends_on: 
+#      - session
+#      - crypto
+#      - config
+#      - logging
+#      - id
+#      - profile
+#      - authentication
+#      - preferences
+#      - msg
+#      - news
+#      - pricing
+  

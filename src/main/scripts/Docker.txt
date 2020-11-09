@@ -1,0 +1,27 @@
+docker image build -t session .
+
+docker run --env-file ./services.env --rm -t --name session session
+
+
+docker run --env-file ./services.env --rm -t --name news news
+
+docker stop config; docker run -d  --env-file ./services.env --rm -t --name config config
+
+docker stop config; docker run -d  --env-file ./services.env --rm -t --name session session
+
+
+
+docker login --username=pianglesorg
+[ec2-user@ip-172-31-57-71 ~]$ docker login --username=piangles
+Password:
+WARNING! Your password will be stored unencrypted in /home/ec2-user/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+
+docker login --username=pianglesorg
+docker tag 052fffa48ea3 pianglesorg/preferences:latest; docker push pianglesorg/preferences
+
+docker rm $(docker ps -a -f status=exited -q); docker rmi $(docker images -a -q)

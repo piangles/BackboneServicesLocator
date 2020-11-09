@@ -33,7 +33,7 @@ public class ServiceTest extends Thread implements SessionAwareable
 	{
 		try
 		{
-			encrypt();
+			userProfileGet();
 		}
 		catch (Exception e)
 		{
