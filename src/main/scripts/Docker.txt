@@ -1,3 +1,7 @@
+docker image build -t central .
+
+docker stop central; docker run -d  -p 80:8080 --rm -t --name central central
+
 docker image build -t session .
 
 docker run --env-file ./services.env --rm -t --name session session
