@@ -22,6 +22,6 @@ Login Succeeded
 
 
 docker login --username=pianglesorg
-docker tag 052fffa48ea3 pianglesorg/preferences:latest; docker push pianglesorg/preferences
+docker tag XXX pianglesorg/XXX:latest; docker push pianglesorg/XXX
 
 docker rm $(docker ps -a -f status=exited -q); docker rmi $(docker images -a -q)
