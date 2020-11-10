@@ -113,6 +113,8 @@ services:
     image: pianglescom/gateway:latest
     build:
       context: ./gateway
+    ports:
+      - "8080:8080"      
     env_file: ./services.env
     container_name: gateway
     depends_on: 
