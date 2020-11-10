@@ -6,6 +6,7 @@ docker image build -t session .
 
 docker run --env-file ./services.env --rm -t --name session session
 
+docker run -p 80:8080 --rm -t --name ui ui
 
 docker run --env-file ./services.env --rm -t --name news news
 
