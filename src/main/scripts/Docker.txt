@@ -6,7 +6,11 @@ docker image build -t session .
 
 docker run --env-file ./services.env --rm -t --name session session
 
-docker run -p 80:8080 --rm -t --name ui ui
+docker image build -t ui .
+docker run -d -p 80:8080 --rm -t --name ui ui
+
+docker image build -t gateway .
+ docker run --env-file ./services.env  -p 8080:8080 --rm -t pianglescom/gateway
 
 docker run --env-file ./services.env --rm -t --name news news
 
@@ -30,3 +34,8 @@ docker login --username=pianglesorg
 docker tag XXX pianglesorg/XXX:latest; docker push pianglesorg/XXX
 
 docker rm $(docker ps -a -f status=exited -q); docker rmi $(docker images -a -q)
+
+List all containers (only IDs) docker ps -aq.
+Stop all running containers. docker stop $(docker ps -aq)
+Remove all containers. docker rm $(docker ps -aq)
+Remove all images. docker rmi $(docker images -q)
