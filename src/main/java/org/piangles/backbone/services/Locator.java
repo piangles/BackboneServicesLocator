@@ -3,6 +3,7 @@ package org.piangles.backbone.services;
 import org.piangles.backbone.services.auth.AuthenticationService;
 import org.piangles.backbone.services.config.ConfigService;
 import org.piangles.backbone.services.crypto.CryptoService;
+import org.piangles.backbone.services.email.EMailService;
 import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.logging.LoggingService;
 import org.piangles.backbone.services.msg.MessagingService;
@@ -82,5 +83,10 @@ public final class Locator extends AbstractServiceLocator
 	public UserProfileService getUserProfileService()
 	{
 		return (UserProfileService) createProxy(UserProfileService.NAME, UserProfileService.class);
+	}
+	
+	public EMailService getEMailService()
+	{
+		return (EMailService) createProxy(EMailService.NAME, EMailService.class);
 	}
 }

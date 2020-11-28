@@ -6,6 +6,7 @@ import org.piangles.backbone.services.crypto.CryptoService;
 import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.profile.BasicUserProfile;
 import org.piangles.backbone.services.profile.UserProfileService;
+import org.piangles.backbone.services.session.SessionManagementService;
 import org.piangles.core.services.remoting.SessionAwareable;
 import org.piangles.core.services.remoting.SessionDetails;
 
@@ -33,7 +34,7 @@ public class ServiceTest extends Thread implements SessionAwareable
 	{
 		try
 		{
-			userProfileGet();
+			session();
 		}
 		catch (Exception e)
 		{
@@ -56,7 +57,7 @@ public class ServiceTest extends Thread implements SessionAwareable
 	
 	private void userProfileCreate() throws Exception
 	{
-		BasicUserProfile profile = new BasicUserProfile("Test", "User", "testuser@piangles.org");
+		BasicUserProfile profile = new BasicUserProfile("Test", "User", "testuser@piangles.org", "123-456-7890");
 		UserProfileService service = Locator.getInstance().getUserProfileService();
 		String id = service.createProfile(profile);
 		System.out.println("UserId: " + id);
@@ -78,6 +79,14 @@ public class ServiceTest extends Thread implements SessionAwareable
 		System.out.println(config.getProperties());
 
 		// ServiceLocator.getInstance().destroy();
+	}
+	
+	private void session() throws Exception
+	{
+		SessionManagementService ss = Locator.getInstance().getSessionManagementService();
+		System.out.println("Calling session management service....");
+		boolean validty = ss.isValid("SomeUser", "SessionId");
+		System.out.println("Response for isValid: " + validty);
 	}
 	
 	@Override
