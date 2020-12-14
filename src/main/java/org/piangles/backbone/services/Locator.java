@@ -10,6 +10,7 @@ import org.piangles.backbone.services.msg.MessagingService;
 import org.piangles.backbone.services.prefs.UserPreferenceService;
 import org.piangles.backbone.services.profile.UserProfileService;
 import org.piangles.backbone.services.session.SessionManagementService;
+import org.piangles.backbone.services.test.FeaturesTestService;
 import org.piangles.core.services.remoting.locator.AbstractServiceLocator;
 
 public final class Locator extends AbstractServiceLocator
@@ -34,6 +35,11 @@ public final class Locator extends AbstractServiceLocator
 		return self;
 	}
 
+	public FeaturesTestService getFeaturesTestService()
+	{
+		return (FeaturesTestService) createProxy(FeaturesTestService.NAME, FeaturesTestService.class);
+	}
+	
 /*
  * Tier1 Configuration
  */
