@@ -14,7 +14,7 @@ public class CryptoServiceTest
 		CryptoService cryptoService = Locator.getInstance().getCryptoService();
 		try 
 		{
-			String decryptedValue = cryptoService.decrypt("TdmVTwllpL3hE+HyDz1ScA==");
+			String decryptedValue = cryptoService.decrypt("kj5IPCk6oWkmxezE9yWh3Q==");
 			System.out.println(decryptedValue);
 		} 
 		catch (CryptoException e) 

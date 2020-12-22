@@ -1,11 +1,9 @@
 package org.piangles.backbone.services.logging;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.UUID;
 
-import org.piangles.backbone.services.logging.Category;
-import org.piangles.backbone.services.logging.LogEvent;
-import org.piangles.backbone.services.logging.SystemInfo;
 import org.piangles.core.services.Header;
 import org.piangles.core.services.Request;
 import org.piangles.core.services.SourceInfo;
@@ -16,7 +14,9 @@ import org.piangles.core.util.SystemHelper;
 
 public class LoggingRequestCreator implements RequestCreator 
 {
+	private static final String CONSOLE_LOGGING = "console.logging";  
 	private SystemInfo systemInfo = null;
+	private ConsoleLogging consoleLogging = ConsoleLogging.None;
 	
 	public LoggingRequestCreator()
 	{
@@ -26,6 +26,21 @@ public class LoggingRequestCreator implements RequestCreator
 		String processId = SystemHelper.getProcessId();
 
 		systemInfo = new SystemInfo(hostName, loginId, processName, processId);
+		String consoleLoggingStr = System.getenv(CONSOLE_LOGGING);
+		try
+		{
+			if (consoleLoggingStr != null)
+			{
+				consoleLogging = ConsoleLogging.valueOf(consoleLoggingStr);
+			}
+		}
+		catch(Exception e)
+		{
+			System.err.println(consoleLoggingStr + " is invalid value for " + CONSOLE_LOGGING + " environment variable. ");
+			System.err.println(CONSOLE_LOGGING + " values must be one of : " + String.join(",", Arrays.stream(ConsoleLogging.values()).map(Enum::name).toArray(String[]::new)));
+			System.err.println("Defaulting " + CONSOLE_LOGGING + " to " + ConsoleLogging.None);
+			e.printStackTrace(System.err);
+		}
 	}
 
 	@Override
@@ -54,22 +69,24 @@ public class LoggingRequestCreator implements RequestCreator
 		if ("RECORD".equals(method.getName().toUpperCase()))
 		{
 			LogEvent logEvent = (LogEvent)args[0];
+			logToConsole(logEvent);
 			request = new Request(userId, sessionId, traceId, header, sourceInfo, serviceName, logEvent.getCategory().name(), args);
 		}
 		else
 		{
-			LogEvent event = null;
+			LogEvent logEvent = null;
 			String threadId = SystemHelper.getThreadId();
 			Category category = Category.valueOf(method.getName().toUpperCase());
 			if (args.length == 1)
 			{
-				event = new LogEvent(traceId, systemInfo.cloneAndCopy(threadId), category, classHelper.getClassName(), classHelper.getLineNumber(), args[0]);
+				logEvent = new LogEvent(traceId, systemInfo.cloneAndCopy(threadId), category, classHelper.getClassName(), classHelper.getLineNumber(), args[0]);
 			}
 			else
 			{
-				event = new LogEvent(traceId, systemInfo.cloneAndCopy(threadId), category, classHelper.getClassName(), classHelper.getLineNumber(), args[0], (Throwable)args[1]);
+				logEvent = new LogEvent(traceId, systemInfo.cloneAndCopy(threadId), category, classHelper.getClassName(), classHelper.getLineNumber(), args[0], (Throwable)args[1]);
 			}
-			args = new Object[]{event};
+			logToConsole(logEvent);
+			args = new Object[]{logEvent};
 			
 			request = new Request(userId, sessionId, traceId, header, sourceInfo, serviceName, method.getName(), args);
 		}
@@ -77,4 +94,18 @@ public class LoggingRequestCreator implements RequestCreator
 		return request;
 	}
 
+	private void logToConsole(LogEvent logEvent)
+	{
+		if (consoleLogging != ConsoleLogging.None)
+		{
+			if (consoleLogging == ConsoleLogging.Brief)
+			{
+				System.out.println(logEvent.toBriefString());
+			}
+			else //Print Detailed
+			{
+				System.out.println(logEvent.toString());
+			}
+		}
+	}
 }
