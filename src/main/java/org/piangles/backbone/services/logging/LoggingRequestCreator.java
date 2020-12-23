@@ -38,9 +38,8 @@ public class LoggingRequestCreator implements RequestCreator
 		{
 			System.err.println(consoleLoggingStr + " is invalid value for " + CONSOLE_LOGGING + " environment variable. ");
 			System.err.println(CONSOLE_LOGGING + " values must be one of : " + String.join(",", Arrays.stream(ConsoleLogging.values()).map(Enum::name).toArray(String[]::new)));
-			System.err.println("Defaulting " + CONSOLE_LOGGING + " to " + ConsoleLogging.None);
-			e.printStackTrace(System.err);
 		}
+		System.out.println("Console Logging set to: " + consoleLogging);
 	}
 
 	@Override
