@@ -20,21 +20,19 @@
 package org.piangles.backbone.services.id;
 
 import org.piangles.backbone.services.Locator;
+import org.piangles.core.test.AbstractServiceTestClient;
 
-import org.piangles.backbone.services.id.IdException;
-
-public class TestIdService
+public class TestIdService extends AbstractServiceTestClient
 {
 	public static void main(String[] args)
 	{
-		try
-		{
-			Identifier nextId = Locator.getInstance().getIdService().getNextIdentifier("Whatever");
-			System.out.println("Next Identifier : " + nextId.getValue());
-		}
-		catch (IdException e)
-		{
-			e.printStackTrace();
-		}
+		new TestIdService().start();
+	}
+	
+	@Override
+	public void runImpl() throws Exception
+	{
+		Identifier nextId = Locator.getInstance().getIdService().getNextIdentifier("UserId");
+		System.out.println("Next Identifier : " + nextId.getValue());
 	}
 }

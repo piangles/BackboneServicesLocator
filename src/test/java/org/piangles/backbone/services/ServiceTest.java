@@ -26,39 +26,22 @@ import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.profile.BasicUserProfile;
 import org.piangles.backbone.services.profile.UserProfileService;
 import org.piangles.backbone.services.session.SessionManagementService;
-import org.piangles.core.services.remoting.SessionAwareable;
 import org.piangles.core.services.remoting.SessionDetails;
+import org.piangles.core.test.AbstractServiceTestClient;
 
-public class ServiceTest extends Thread implements SessionAwareable
+public class ServiceTest extends AbstractServiceTestClient
 {
-	private static String cipherAuthorizationId = "7a948dce-1ebb-4770-b077-f453e60243da";
+	private static String cipherAuthorizationId = AbstractServiceTestClient.cipherAuthorizationId;
 
 	public static void main(String[] args) 
 	{
-		ServiceTest test = new ServiceTest();
-		test.start();
-		try
-		{
-			test.join();
-		}
-		catch (InterruptedException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.exit(0);
+		new ServiceTest().start();
 	}
 	
-	public void run()
+	@Override
+	public void runImpl() throws Exception
 	{
-		try
-		{
-			session();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		session();
 	}
 	
 	private void encrypt() throws Exception
@@ -106,11 +89,5 @@ public class ServiceTest extends Thread implements SessionAwareable
 		System.out.println("Calling session management service....");
 		boolean validty = ss.isValid("SomeUser", "SessionId");
 		System.out.println("Response for isValid: " + validty);
-	}
-	
-	@Override
-	public SessionDetails getSessionDetails()
-	{
-		return new SessionDetails("LoggingService", "TODOSessionId");
 	}
 }

@@ -20,20 +20,17 @@
 package org.piangles.backbone.services.logging;
 
 import org.piangles.backbone.services.Locator;
+import org.piangles.core.test.AbstractServiceTestClient;
 
-import org.piangles.backbone.services.logging.LoggingService;
-import org.piangles.core.services.remoting.SessionAwareable;
-import org.piangles.core.services.remoting.SessionDetails;
-
-public class LoggingServiceTest extends Thread implements SessionAwareable
+public class LoggingServiceTest extends AbstractServiceTestClient
 {
 	public static void main(String[] args)
 	{
-		LoggingServiceTest test = new LoggingServiceTest();
-		test.start();
+		new LoggingServiceTest().start();
 	}
 	
-	public void run()
+	@Override
+	public void runImpl() throws Exception
 	{
 		System.setProperty("process.name", "LoggingTest");
 		LoggingService logger = Locator.getInstance().getLoggingService();
@@ -42,12 +39,5 @@ public class LoggingServiceTest extends Thread implements SessionAwareable
 		logger.info("TestMessage", new Exception());
 		System.out.println("Done!");
 		System.exit(1);
-	}
-	
-
-	@Override
-	public SessionDetails getSessionDetails()
-	{
-		return new SessionDetails("UserId", "TODOSessionId");
 	}
 }
