@@ -24,11 +24,13 @@ import org.piangles.backbone.services.config.ConfigService;
 import org.piangles.backbone.services.crypto.CryptoService;
 import org.piangles.backbone.services.email.EMailService;
 import org.piangles.backbone.services.id.IdService;
+import org.piangles.backbone.services.instrument.InstrumentationService;
 import org.piangles.backbone.services.logging.LoggingService;
 import org.piangles.backbone.services.msg.MessagingService;
 import org.piangles.backbone.services.prefs.UserPreferenceService;
 import org.piangles.backbone.services.profile.UserProfileService;
 import org.piangles.backbone.services.session.SessionManagementService;
+import org.piangles.backbone.services.suggest.AutoSuggestionService;
 import org.piangles.backbone.services.test.FeaturesTestService;
 import org.piangles.core.services.remoting.locator.AbstractServiceLocator;
 
@@ -62,6 +64,11 @@ public final class Locator extends AbstractServiceLocator
 /*
  * Tier1 Configuration
  */
+	public InstrumentationService getInstrumentationService()
+	{
+		return (InstrumentationService) createProxy(InstrumentationService.NAME, InstrumentationService.class);
+	}
+
 	public SessionManagementService getSessionManagementService()
 	{
 		return (SessionManagementService) createProxy(SessionManagementService.NAME, SessionManagementService.class);
@@ -113,5 +120,10 @@ public final class Locator extends AbstractServiceLocator
 	public EMailService getEMailService()
 	{
 		return (EMailService) createProxy(EMailService.NAME, EMailService.class);
+	}
+	
+	public AutoSuggestionService getAutoSuggestionService()
+	{
+		return (AutoSuggestionService) createProxy(AutoSuggestionService.NAME, AutoSuggestionService.class);
 	}
 }
