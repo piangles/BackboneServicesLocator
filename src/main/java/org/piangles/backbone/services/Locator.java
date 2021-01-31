@@ -23,6 +23,7 @@ import org.piangles.backbone.services.auth.AuthenticationService;
 import org.piangles.backbone.services.config.ConfigService;
 import org.piangles.backbone.services.crypto.CryptoService;
 import org.piangles.backbone.services.email.EMailService;
+import org.piangles.backbone.services.geo.GeoLocationService;
 import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.instrument.InstrumentationService;
 import org.piangles.backbone.services.logging.LoggingService;
@@ -125,5 +126,10 @@ public final class Locator extends AbstractServiceLocator
 	public AutoSuggestionService getAutoSuggestionService()
 	{
 		return (AutoSuggestionService) createProxy(AutoSuggestionService.NAME, AutoSuggestionService.class);
+	}
+	
+	public GeoLocationService getGeoLocationService()
+	{
+		return (GeoLocationService) createProxy(GeoLocationService.NAME, GeoLocationService.class);
 	}
 }
