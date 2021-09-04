@@ -21,7 +21,14 @@ package org.piangles.backbone.services.logging;
 import org.piangles.backbone.services.Locator;
 import org.piangles.core.util.Logger;
 
-public final class LoggingServiceLogger implements Logger
+/**
+ * This class is an implementation of Logger interface and should not be
+ * used directly. Configure the canonical name of this class in logging.class.
+ * It will be leveraged by classes that do not have access to LoggingService
+ * at compile time.
+ *
+ */
+public final class LoggingServiceLogger extends Logger
 {
 	private LoggingService logger = null;
 	

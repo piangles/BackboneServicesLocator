@@ -71,12 +71,16 @@ public class LoggingRequestCreator implements RequestCreator
 				classHelper.getCompleteStackTrace(), null);
 		
 		/**
-		 * First we need to identify - If the current thread is not Traceable 
-		 * (implies it is not a RequestProcessor) or a Thread that is not handling
-		 * a Request but is processing something needed by the service.
+		 * First we need to identify - If the current thread is Traceable 
+		 * (implies it is a RequestProcessor) or just a Thread that is processing 
+		 * on a separate thread.
 		 * 
-		 *  Why : we need to keep track of what is traceable through traceId.
-		 *  However if every LogEvent has a traceId then it clouds the DB. 
+		 * If it is a Traceable thread, we continue to use the TracId, so we can keep
+		 * track of the chain of events.
+		 * 
+		 * If it is not a Traceable thread, we will nullify the traceId. Else it is 
+		 * misleading when viewing the records in the database. One thinks it is an events
+		 * that is chained while in fact it is really a log from a separate Thread.
 		 */
 		Object currentThread = Thread.currentThread();
 		if (!(currentThread instanceof Traceable))
@@ -90,7 +94,7 @@ public class LoggingRequestCreator implements RequestCreator
 			logToConsole(logEvent);
 			request = new Request(userId, sessionId, traceId, header, sourceInfo, serviceName, logEvent.getCategory().name(), args);
 		}
-		else
+		else //The caller invoked debug, info, warn, error or fatal methods on LoggingService
 		{
 			LogEvent logEvent = null;
 			String threadId = SystemHelper.getThreadId();
@@ -103,6 +107,11 @@ public class LoggingRequestCreator implements RequestCreator
 			{
 				logEvent = new LogEvent(traceId, systemInfo.cloneAndCopy(threadId), category, classHelper.getClassName(), classHelper.getLineNumber(), args[0], (Throwable)args[1]);
 			}
+			/**
+			 * To make life easy we can log to console as well. The options for logging to console are
+			 * defined in ConsoleLogging enum and by default is turned off. The environment variable
+			 * console.logging should be set to Brief or Complete to enable console logging.
+			 */
 			logToConsole(logEvent);
 			args = new Object[]{logEvent};
 			
