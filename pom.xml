@@ -5,7 +5,7 @@
 	<groupId>org.piangles.backbone.services</groupId>
 	<artifactId>BackboneServicesLocator</artifactId>
 	<packaging>jar</packaging>
-	<version>0.2</version>
+	<version>0.3</version>
 
 	<name>PiAngles BackboneServiceLocator</name>
 	<description>
@@ -154,7 +154,7 @@
 			</plugin>
 		</plugins>
 
-		<finalName>BackboneServicesLocator-{version}</finalName>
+		<finalName>BackboneServicesLocator-${version}</finalName>
 	</build>
 
 </project>
