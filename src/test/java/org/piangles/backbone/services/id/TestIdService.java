@@ -32,7 +32,7 @@ public class TestIdService extends AbstractServiceTestClient
 	@Override
 	public void runImpl() throws Exception
 	{
-		Identifier nextId = Locator.getInstance().getIdService().getNextIdentifier("UserId");
+		Identifier nextId = Locator.getInstance().getIdService().getIdentifier("UserId");
 		System.out.println("Next Identifier : " + nextId.getValue());
 	}
 }

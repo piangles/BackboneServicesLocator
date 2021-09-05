@@ -68,7 +68,7 @@ public class ServiceTest extends AbstractServiceTestClient
 	private void id() throws Exception
 	{
 		IdService service = Locator.getInstance().getIdService();
-		System.out.println(service.getNextIdentifier("Test"));
+		System.out.println(service.getIdentifier("Test"));
 	}
 
 	private void config() throws Exception
