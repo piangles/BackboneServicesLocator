@@ -28,7 +28,7 @@ import org.piangles.backbone.services.id.IdService;
 import org.piangles.backbone.services.instrument.InstrumentationService;
 import org.piangles.backbone.services.logging.LoggingService;
 import org.piangles.backbone.services.msg.MessagingService;
-import org.piangles.backbone.services.prefs.UserPreferenceService;
+import org.piangles.backbone.services.prefs.UserPreferencesService;
 import org.piangles.backbone.services.profile.UserProfileService;
 import org.piangles.backbone.services.session.SessionManagementService;
 import org.piangles.backbone.services.suggest.AutoSuggestionService;
@@ -108,9 +108,9 @@ public final class Locator extends AbstractServiceLocator
 		return (MessagingService) createProxy(MessagingService.NAME, MessagingService.class);
 	}
 
-	public UserPreferenceService getUserPreferenceService()
+	public UserPreferencesService getUserPreferencesService()
 	{
-		return (UserPreferenceService) createProxy(UserPreferenceService.NAME, UserPreferenceService.class);
+		return (UserPreferencesService) createProxy(UserPreferencesService.NAME, UserPreferencesService.class);
 	}
 
 	public UserProfileService getUserProfileService()
