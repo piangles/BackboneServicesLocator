@@ -51,10 +51,6 @@ public class MessagingRequestCreator extends DefaultRequestCreator
 			event.setPayload(payload);
 			args = new Object[]{args[0], event};
 		}
-		else if (method.getName().equals("createStream"))
-		{
-			
-		}
 
 		return super.createRequest(userId, sessionId, traceId, serviceName, header, method, args);
 	}
