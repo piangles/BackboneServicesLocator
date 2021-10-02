@@ -32,13 +32,13 @@ public class MessagingRequestCreator extends DefaultRequestCreator
 	@Override
 	public Request createRequest(String userId, String sessionId, UUID traceId, String serviceName, Header header, Method method, Object[] args) throws Throwable
 	{
+		/**
+		 * Convert the Payload from Object to JSON String, this is because the Messaging
+		 * Service does not have the dependency POJOs. So need to convert in Handler class
+		 * from POJO to JSON.
+		 */
 		if (method.getName() == "fanOut")
 		{
-			/**
-			 * Convert the Payload from Object to JSON String, this is because the Messaging
-			 * Service does not have the dependency POJOs. So need to convert in Handler class
-			 * from POJO to JSON.
-			 */
 			FanoutRequest fanoutRequest = (FanoutRequest)args[0];
 			String payload = new String(JSON.getEncoder().encode(fanoutRequest.getEvent().getPayload()));
 			fanoutRequest.getEvent().setPayload(payload);
@@ -46,7 +46,19 @@ public class MessagingRequestCreator extends DefaultRequestCreator
 		}
 		else if (method.getName().equals("publish"))
 		{
-			Event event = (Event)args[1];
+			/**
+			 * There are 2 publish overloaded methods with different parameters.
+			 * So need to figure out where the Event object is in params list.
+			 */
+			Event event = null;
+			for (int i=0; i < args.length; ++i)
+			{
+				if (args[i] instanceof Event)
+				{
+					event = (Event)args[i];
+					break;
+				}
+			}
 			String payload = new String(JSON.getEncoder().encode(event.getPayload()));
 			event.setPayload(payload);
 			args = new Object[]{args[0], event};
