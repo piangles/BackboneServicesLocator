@@ -51,17 +51,20 @@ public class MessagingRequestCreator extends DefaultRequestCreator
 			 * So need to figure out where the Event object is in params list.
 			 */
 			Event event = null;
-			for (int i=0; i < args.length; ++i)
+			if (args.length == 2)//The publish method for topic and Event
 			{
-				if (args[i] instanceof Event)
-				{
-					event = (Event)args[i];
-					break;
-				}
+				event = (Event)args[1];
+				String payload = new String(JSON.getEncoder().encode(event.getPayload()));
+				event.setPayload(payload);
+				args = new Object[]{args[0], event};
 			}
-			String payload = new String(JSON.getEncoder().encode(event.getPayload()));
-			event.setPayload(payload);
-			args = new Object[]{args[0], event};
+			else if (args.length == 3)//The publish method for entityType, entity and Event
+			{
+				event = (Event)args[2];
+				String payload = new String(JSON.getEncoder().encode(event.getPayload()));
+				event.setPayload(payload);
+				args = new Object[]{args[0], args[1], event};
+			}
 		}
 
 		return super.createRequest(userId, sessionId, traceId, serviceName, header, method, args);
