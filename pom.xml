@@ -4,7 +4,7 @@
 	<groupId>org.piangles.backbone.services</groupId>
 	<artifactId>BackboneServicesLocator</artifactId>
 	<packaging>jar</packaging>
-	<version>4.7</version>
+	<version>4.8</version>
 
 	<name>PiAngles BackboneServiceLocator</name>
 	<description>
@@ -61,7 +61,7 @@
 		<dependency>
 			<groupId>org.piangles.backbone.services</groupId>
 			<artifactId>BackboneServices</artifactId>
-			<version>3.8</version>
+			<version>3.9</version>
 		</dependency>
 
 		<dependency>
