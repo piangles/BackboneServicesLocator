@@ -57,14 +57,16 @@ public final class Locator extends AbstractServiceLocator
 		return self;
 	}
 
+	public GatewayService getGatewayService()
+	{
+		return (GatewayService) createProxy(GatewayService.NAME, GatewayService.class);
+	}
+	
 	public FeaturesTestService getFeaturesTestService()
 	{
 		return (FeaturesTestService) createProxy(FeaturesTestService.NAME, FeaturesTestService.class);
 	}
 	
-/*
- * Tier1 Configuration
- */
 	public InstrumentationService getInstrumentationService()
 	{
 		return (InstrumentationService) createProxy(InstrumentationService.NAME, InstrumentationService.class);
@@ -85,9 +87,6 @@ public final class Locator extends AbstractServiceLocator
 		return (CryptoService) createProxy(CryptoService.NAME, CryptoService.class);
 	}
 
-/**
- * Rest of the Backbone Services 	
- */
 	public LoggingService getLoggingService()
 	{
 		return (LoggingService) createProxy(LoggingService.NAME, LoggingService.class);
