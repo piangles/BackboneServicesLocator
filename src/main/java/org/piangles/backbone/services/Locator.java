@@ -132,4 +132,9 @@ public final class Locator extends AbstractServiceLocator
 	{
 		return (GeoLocationService) createProxy(GeoLocationService.NAME, GeoLocationService.class);
 	}
+	
+	public FeatureToggleService getFeatureToggleService()
+	{
+		return (FeatureToggleService) createProxy(FeatureToggleService.NAME, FeatureToggleService.class);
+	}
 }
