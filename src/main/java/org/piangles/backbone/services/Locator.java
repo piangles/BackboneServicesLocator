@@ -23,6 +23,7 @@ import org.piangles.backbone.services.auth.AuthenticationService;
 import org.piangles.backbone.services.config.ConfigService;
 import org.piangles.backbone.services.crypto.CryptoService;
 import org.piangles.backbone.services.email.EMailService;
+import org.piangles.backbone.services.feature.FeatureToggleService;
 import org.piangles.backbone.services.gateway.GatewayService;
 import org.piangles.backbone.services.geo.GeoLocationService;
 import org.piangles.backbone.services.id.IdService;
