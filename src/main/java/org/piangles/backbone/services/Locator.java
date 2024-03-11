@@ -24,7 +24,6 @@ import org.piangles.backbone.services.config.ConfigService;
 import org.piangles.backbone.services.crypto.CryptoService;
 import org.piangles.backbone.services.email.EMailService;
 import org.piangles.backbone.services.feature.FeatureManagementService;
-import org.piangles.backbone.services.feature.FeatureToggleService;
 import org.piangles.backbone.services.gateway.GatewayService;
 import org.piangles.backbone.services.geo.GeoLocationService;
 import org.piangles.backbone.services.id.IdService;
@@ -133,12 +132,6 @@ public final class Locator extends AbstractServiceLocator
 	public GeoLocationService getGeoLocationService()
 	{
 		return (GeoLocationService) createProxy(GeoLocationService.NAME, GeoLocationService.class);
-	}
-	
-	@Deprecated
-	public FeatureToggleService getFeatureToggleService()
-	{
-		return (FeatureToggleService) createProxy(FeatureToggleService.NAME, FeatureToggleService.class);
 	}
 	
 	public FeatureManagementService getFeatureManagementService()
